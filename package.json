@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.7",
     "tsx": "^4.19.1"
   },
-  "type": "module",
-  "module": "nodenext"
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-telegram-bot-api": "^0.66.0"
+  }
 }
