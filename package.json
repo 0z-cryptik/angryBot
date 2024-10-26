@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.8.1",
     "@types/node-telegram-bot-api": "^0.64.7",
     "tsx": "^4.19.1"
   },
