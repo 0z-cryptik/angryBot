@@ -19,7 +19,7 @@ app.post("/webhook", async (req: Request, res: Response) => {
 
   let name: string;
 
-  if (msgOBJ.from.last_name !== "") {
+  if (msgOBJ.from.last_name) {
     name = `${firstName} ${msgOBJ.from.last_name}`;
   } else {
     name = firstName;
