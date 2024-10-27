@@ -16,7 +16,7 @@ app.post("/webhook", async (req: Request, res: Response) => {
   const chatId: number = msgOBJ.chat.id;
   const message: string = msgOBJ.text;
   const firstName: string = msgOBJ.from.first_name;
-  const reply: string = roastFunc(/*firstName, message*/);
+  const reply: string = roastFunc(firstName, message);
   console.log(reply)
 
   try {

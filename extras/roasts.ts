@@ -1,4 +1,4 @@
-export const roastFunc = (/*name: string, message: string*/): string => {
+export const roastFunc = (name: string, message: string): string => {
   const roastsArr: string[] = [
     `Hi {name}, kindly f*ck off 🤭 {emojis['slightly_smiling_face']}`,
     "🤭 Oh shut your stupid ass up, talking bout {message} {emojis['unamused_face']}",
@@ -26,5 +26,5 @@ export const roastFunc = (/*name: string, message: string*/): string => {
   ];
 
   const randomIndex = Math.floor(Math.random() * roastsArr.length);
-  return roastFunc[randomIndex];
+  return roastsArr[randomIndex];
 };
