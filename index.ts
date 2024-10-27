@@ -16,8 +16,16 @@ app.post("/webhook", async (req: Request, res: Response) => {
   const chatId: number = msgOBJ.chat.id;
   const message: string = msgOBJ.text;
   const firstName: string = msgOBJ.from.first_name;
-  const reply: string = roastFunc(firstName, message);
-  console.log(reply)
+
+  let name: string;
+
+  if (msgOBJ.from.last_name !== "") {
+    name = `${firstName} ${msgOBJ.from.last_name}`;
+  } else {
+    name = firstName;
+  }
+
+  const reply: string = roastFunc(name, message);
 
   try {
     await fetch(`https://api.telegram.org/bot${botKey}/sendMessage`, {
