@@ -17,7 +17,7 @@ app.post("/webhook", async (req: Request, res: Response) => {
   const message: string = msgOBJ.text;
   const firstName: string = msgOBJ.from.first_name;
 
-  let name: string;
+  let name: string, reply: string;
 
   if (msgOBJ.from.last_name) {
     name = `${firstName} ${msgOBJ.from.last_name}`;
@@ -25,7 +25,11 @@ app.post("/webhook", async (req: Request, res: Response) => {
     name = firstName;
   }
 
-  const reply: string = roastFunc(name, message);
+  if (message === "/start") {
+    reply = "Please leave before I make you cry 🙏";
+  } else {
+    reply = roastFunc(name, message);
+  }
 
   try {
     await fetch(`https://api.telegram.org/bot${botKey}/sendMessage`, {
