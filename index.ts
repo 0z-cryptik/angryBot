@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import { Message } from "node-telegram-bot-api";
 import express, { Express, Request, Response } from "express";
-import { roastFunc } from "./extras/roasts";
+import { roastFunc } from "./extras/roasts.js";
 
 config();
 
