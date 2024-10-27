@@ -10,17 +10,9 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("hola");
-});
-
 app.post("/webhook", async (req: Request, res: Response) => {
-  console.log(req.body);
-
   const msg: Message = req.body.message;
-
   const chatId: number = msg.chat.id;
-  //const messageText = msg.text;
 
   try {
     await fetch(`https://api.telegram.org/bot${botKey}/sendMessage`, {
