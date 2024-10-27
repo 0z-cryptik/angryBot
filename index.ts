@@ -17,14 +17,9 @@ app.get("/", (req: Request, res: Response) => {
 app.post("/webhook", async (req: Request, res: Response) => {
   console.log(req.body);
 
-  const msg = req.body;
+  const msg: Message = req.body.message;
 
-  if (!msg?.chat?.id) {
-    console.error("Invalid message format, 'chat.id' not found.");
-    return
-  }
-
-  const chatId = msg.chat.id;
+  const chatId: number = msg.chat.id;
   //const messageText = msg.text;
 
   try {
