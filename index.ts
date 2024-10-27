@@ -10,6 +10,10 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("hola");
+});
+
 app.post("/webhook", async (req: Request, res: Response) => {
   console.log(req.body);
 
