@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { Message } from "node-telegram-bot-api";
 import express, { Express, Request, Response } from "express";
+import { roastFunc } from "./extras/roasts";
 
 config();
 
@@ -11,8 +12,10 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.post("/webhook", async (req: Request, res: Response) => {
-  const msg: Message = req.body.message;
-  const chatId: number = msg.chat.id;
+  const msgOBJ: Message = req.body.message;
+  const chatId: number = msgOBJ.chat.id;
+  const message: string = msgOBJ.text;
+  const firstName: string = msgOBJ.from.first_name;
 
   try {
     await fetch(`https://api.telegram.org/bot${botKey}/sendMessage`, {
@@ -22,14 +25,14 @@ app.post("/webhook", async (req: Request, res: Response) => {
       },
       body: JSON.stringify({
         chat_id: chatId,
-        text: "hey"
+        text: roastFunc(firstName, message)
       })
     });
 
-    res.sendStatus(200)
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
-    res.sendStatus(500)
+    res.sendStatus(500);
   }
 });
 
